@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const db = require('./db');
+const db = require('/db');
 
 const mainMenu = () => {
     inquirer
@@ -109,11 +109,11 @@ const addRole = () => {
             },
             {
                 type: 'input',
-                name: 'department_id',
+                name: 'departmentID',
                 message: 'What is the department ID of the role?',
             },
         ]).then((answer) => {
-            db.createRole(answer.title, answer.salary, answer.department_id)
+            db.createRole(answer.title, answer.salary, answer.departmentID)
                 .then(() => {
                     console.log('Role added!');
                     mainMenu();
@@ -126,7 +126,7 @@ const addEmployee = () => {
     inquirer
     .prompt([
         {
-            type: 'input
+            type: 'input',
             name: 'firstName',
             message: 'What is the employee\'s first name?',
         },
@@ -136,16 +136,16 @@ const addEmployee = () => {
         },
         {
             type: 'input',
-            name: 'role',
-            message: 'What is the role of the employee?',
+            name: 'roleID',
+            message: 'What is the Role ID of the employee?',
         },
         {
             type: 'input',
-            name: 'manager',
-            message: 'Enter the manager of the employee',
+            name: 'managerID',
+            message: 'Enter the manager ID of the employee',
         },
     ]).then((answer) => { 
-        db.createEmployee(answer.firstName, answer.lastName, answer.role, answer.manager)
+        db.createEmployee(answer.firstName, answer.lastName, answer.roleID, answer.managerID)
             .then(() => {
                 console.log('Employee added!');
                 mainMenu();
@@ -172,9 +172,9 @@ const updateEmployeeRole = () => {
         db.updateEmployeeRole(answer.employeeID, answer.roleID)
             .then(() => {
                 console.log('Employee role updated!');
-                mainMenu();
-            });
-    };
+                mainMenu();}
+            )});
+};
 
     // Call the mainMenu function
     mainMenu();
